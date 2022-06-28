@@ -17,4 +17,9 @@ public class ProductService {
         return productMapper.toListDTO(listProduct);
     }
 
+    public ProductDTO getProduct(Long productId) {
+        ProductEntity product = productRepository.findById(productId).orElseThrow(() ->
+                new IllegalStateException("Product not found"));
+        return productMapper.toDTO(product);
+    }
 }

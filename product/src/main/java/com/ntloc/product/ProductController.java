@@ -3,6 +3,7 @@ package com.ntloc.product;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,11 @@ public class ProductController {
     @GetMapping
     public List<ProductDTO> getAllProduct() {
         return productService.getAllProduct();
+    }
+
+    @GetMapping(path = "/{productId}")
+    public ProductDTO getProduct(@PathVariable("productId") Long productId) {
+        return productService.getProduct(productId);
     }
 
 }

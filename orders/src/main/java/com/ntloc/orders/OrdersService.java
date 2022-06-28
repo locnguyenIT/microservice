@@ -18,11 +18,16 @@ public class OrdersService {
         return ordersMapper.toListDTO(allOrders);
     }
 
+    public OrdersDTO getOrders(Long ordersId) {
+        OrdersEntity orders = ordersRepository.findById(ordersId).orElseThrow(() ->
+                new IllegalStateException("Orders not found"));
+        return ordersMapper.toDTO(orders);
+    }
+
     public OrdersDTO order(OrdersDTO ordersDTO) {
         OrdersEntity ordersEntity = ordersMapper.toEntity(ordersDTO);
         ordersEntity.setCreateAt(LocalDateTime.now());
         return ordersMapper.toDTO(ordersRepository.save(ordersEntity));
     }
-
 
 }

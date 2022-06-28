@@ -19,8 +19,14 @@ public class OrdersController {
         return ordersService.getAllOrders();
     }
 
+    @GetMapping(path = "/{ordersId}")
+    public OrdersDTO getOrders(@PathVariable("ordersId") Long ordersId) {
+        return ordersService.getOrders(ordersId);
+    }
+
     @PostMapping
     public OrdersDTO order(@RequestBody OrdersDTO ordersDTO) {
         return ordersService.order(ordersDTO);
     }
+
 }
