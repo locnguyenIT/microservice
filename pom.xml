@@ -11,6 +11,7 @@
   <modules>
     <module>customer</module>
     <module>product</module>
+    <module>orders</module>
   </modules>
 
   <name>microservices</name>
