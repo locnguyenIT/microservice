@@ -1,5 +1,7 @@
 package com.ntloc.customer;
 
+import com.ntloc.customer.feign.CustomerOrdersFeignClient;
+import com.ntloc.customer.feign.CustomerProductFeignClient;
 import com.ntloc.customer.request.CustomerOrdersRequest;
 import com.ntloc.customer.response.CustomerOrdersResponse;
 import com.ntloc.customer.response.OrdersResponse;
@@ -7,7 +9,6 @@ import com.ntloc.customer.response.ProductResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -18,7 +19,9 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
-    private final RestTemplate restTemplate;
+    //private final RestTemplate restTemplate;
+    private final CustomerProductFeignClient customerProductFeignClient;
+    private final CustomerOrdersFeignClient customerOrdersFeignClient;
 
     public List<CustomerDTO> getAllCustomer() {
         List<CustomerEntity> listCustomer = customerRepository.findAll();
@@ -45,13 +48,17 @@ public class CustomerService {
         CustomerEntity customer = customerRepository.findById(customerOrdersRequest.getCustomerId()).orElseThrow(() ->
                 new IllegalStateException("Customer not found"));
 
-        OrdersResponse ordersResponse = restTemplate.postForObject("http://ORDERS/api/v1/orders",
-                customerOrdersRequest,
-                OrdersResponse.class);
+        OrdersResponse ordersResponse = customerOrdersFeignClient.order(customerOrdersRequest);
 
-        ProductResponse productResponse = restTemplate.getForObject("http://PRODUCT/api/v1/product/{productId}",
-                ProductResponse.class,
-                ordersResponse.getProductId());
+        ProductResponse productResponse = customerProductFeignClient.getProduct(ordersResponse.getProductId());
+
+//        OrdersResponse ordersResponse = restTemplate.postForObject("http://ORDERS/api/v1/orders",
+//                customerOrdersRequest,
+//                OrdersResponse.class);
+//
+//        ProductResponse productResponse = restTemplate.getForObject("http://PRODUCT/api/v1/product/{productId}",
+//                ProductResponse.class,
+//                ordersResponse.getProductId());
 
         CustomerOrdersResponse customerOrdersResponse = CustomerOrdersResponse.builder()
                 .id(ordersResponse.getId())
