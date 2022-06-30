@@ -16,6 +16,7 @@
         <module name="orders" />
         <module name="product" />
         <module name="eureka-server" />
+        <module name="gateway" />
         <module name="customer" />
       </profile>
     </annotationProcessing>
