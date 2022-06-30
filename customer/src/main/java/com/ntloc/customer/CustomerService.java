@@ -45,11 +45,11 @@ public class CustomerService {
         CustomerEntity customer = customerRepository.findById(customerOrdersRequest.getCustomerId()).orElseThrow(() ->
                 new IllegalStateException("Customer not found"));
 
-        OrdersResponse ordersResponse = restTemplate.postForObject("http://localhost:8030/api/v1/orders",
+        OrdersResponse ordersResponse = restTemplate.postForObject("http://ORDERS/api/v1/orders",
                 customerOrdersRequest,
                 OrdersResponse.class);
 
-        ProductResponse productResponse = restTemplate.getForObject("http://localhost:8020/api/v1/product/{productId}",
+        ProductResponse productResponse = restTemplate.getForObject("http://PRODUCT/api/v1/product/{productId}",
                 ProductResponse.class,
                 ordersResponse.getProductId());
 

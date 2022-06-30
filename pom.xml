@@ -12,6 +12,7 @@
     <module>customer</module>
     <module>product</module>
     <module>orders</module>
+    <module>eureka-server</module>
   </modules>
 
   <name>microservices</name>
