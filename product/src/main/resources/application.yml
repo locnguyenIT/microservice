@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: product
+  zipkin:
+    baseUrl: http://localhost:9411
   datasource:
     url: jdbc:mysql://localhost:3307/product
     username: root

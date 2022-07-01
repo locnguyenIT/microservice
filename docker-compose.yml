@@ -12,8 +12,17 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: password
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - spring
 networks:
   mysql:
+    driver: bridge
+  spring:
     driver: bridge
 volumes:
   data:

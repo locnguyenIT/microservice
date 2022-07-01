@@ -5,6 +5,8 @@ server:
 spring:
   application:
     name: gateway
+  zipkin:
+    baseUrl: http://localhost:9411
   cloud:
     gateway:
       routes:
@@ -20,3 +22,10 @@ spring:
           uri: lb://ORDERS
           predicates:
             - Path=/api/v1/orders/**
+#Eureka-Client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
