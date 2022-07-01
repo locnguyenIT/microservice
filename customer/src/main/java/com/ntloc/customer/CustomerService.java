@@ -19,7 +19,6 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
-    //private final RestTemplate restTemplate;
     private final CustomerProductFeignClient customerProductFeignClient;
     private final CustomerOrdersFeignClient customerOrdersFeignClient;
 
@@ -51,14 +50,6 @@ public class CustomerService {
         OrdersResponse ordersResponse = customerOrdersFeignClient.order(customerOrdersRequest);
 
         ProductResponse productResponse = customerProductFeignClient.getProduct(ordersResponse.getProductId());
-
-//        OrdersResponse ordersResponse = restTemplate.postForObject("http://ORDERS/api/v1/orders",
-//                customerOrdersRequest,
-//                OrdersResponse.class);
-//
-//        ProductResponse productResponse = restTemplate.getForObject("http://PRODUCT/api/v1/product/{productId}",
-//                ProductResponse.class,
-//                ordersResponse.getProductId());
 
         CustomerOrdersResponse customerOrdersResponse = CustomerOrdersResponse.builder()
                 .id(ordersResponse.getId())
