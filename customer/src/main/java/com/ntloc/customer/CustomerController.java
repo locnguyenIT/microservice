@@ -1,8 +1,7 @@
 package com.ntloc.customer;
 
-import com.ntloc.customer.request.CustomerOrdersRequest;
-import com.ntloc.customer.response.CustomerOrdersResponse;
-import com.ntloc.customer.response.CustomerRegistrationResponse;
+import com.ntloc.client.orders.OrdersRequest;
+import com.ntloc.client.orders.OrdersResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -30,15 +29,15 @@ public class CustomerController {
     }
 
     @PostMapping(path = "/registration")
-    public CustomerRegistrationResponse register(@RequestBody CustomerDTO customerDTO) {
+    public CustomerDTO register(@RequestBody CustomerDTO customerDTO) {
         log.info("New customer registration {}", customerDTO);
         return customerService.register(customerDTO);
     }
 
     @PostMapping(path = "/orders")
-    public CustomerOrdersResponse orders(@RequestBody CustomerOrdersRequest customerOrdersRequest) {
-        log.info("Customer orders {}", customerOrdersRequest);
-        return customerService.orders(customerOrdersRequest);
+    public OrdersResponse orders(@RequestBody OrdersRequest ordersRequest) {
+        log.info("Customer orders {}", ordersRequest);
+        return customerService.orders(ordersRequest);
     }
 
 }

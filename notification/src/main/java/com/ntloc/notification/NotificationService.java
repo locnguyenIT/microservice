@@ -1,6 +1,6 @@
 package com.ntloc.notification;
 
-import com.ntloc.customer.request.CustomerNotificationRequest;
+import com.ntloc.client.notification.NotificationRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +25,13 @@ public class NotificationService {
         return notificationMapper.toDTO(product);
     }
 
-    public void sendNotification(CustomerNotificationRequest customerNotificationRequest) {
+    public void sendNotification(NotificationRequest notificationRequest) {
         NotificationEntity notification = notificationRepository.save(NotificationEntity.builder()
-                .toCustomerId(customerNotificationRequest.getToCustomerId())
-                .toCustomerName(customerNotificationRequest.getToCustomerName())
-                .toCustomerEmail(customerNotificationRequest.getToCustomerEmail())
+                .toCustomerId(notificationRequest.getToCustomerId())
+                .toCustomerName(notificationRequest.getToCustomerName())
+                .toCustomerEmail(notificationRequest.getToCustomerEmail())
                 .sender("ntloc")
-                .message(customerNotificationRequest.getMessage())
+                .message(notificationRequest.getMessage())
                 .sentAt(LocalDateTime.now())
                 .build());
 

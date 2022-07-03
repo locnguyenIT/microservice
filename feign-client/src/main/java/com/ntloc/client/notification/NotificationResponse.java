@@ -1,4 +1,4 @@
-package com.ntloc.customer.response;
+package com.ntloc.client.notification;
 
 import lombok.Getter;
 import lombok.Setter;

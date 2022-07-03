@@ -1,19 +1,16 @@
-package com.ntloc.customer.request;
+package com.ntloc.client.orders;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @ToString
-public class CustomerOrdersRequest {
+public class OrdersRequest {
 
     private Long id;
     private Long customerId;
     private Long productId;
     private Integer amount;
-    private LocalDateTime createAt;
 }

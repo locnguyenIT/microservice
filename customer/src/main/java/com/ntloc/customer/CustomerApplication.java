@@ -5,12 +5,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-//ScanBasePackages is using to load all the bean from that package
+//ScanBasePackages is scan package to fetch all class from that package
 @SpringBootApplication(
         scanBasePackages = {"com.ntloc.amqp",
-                "com.ntloc.customer"})
+                "com.ntloc.customer"
+        }
+)
 @EnableEurekaClient
-@EnableFeignClients
+@EnableFeignClients(
+        basePackages = "com.ntloc.client"
+)
 public class CustomerApplication {
     public static void main(String[] args) {
         SpringApplication.run(CustomerApplication.class, args);

@@ -1,6 +1,6 @@
 package com.ntloc.notification.rabbitmq;
 
-import com.ntloc.customer.request.CustomerNotificationRequest;
+import com.ntloc.client.notification.NotificationRequest;
 import com.ntloc.notification.NotificationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +15,8 @@ public class NotificationConsumer {
     private final NotificationService notificationService;
 
     @RabbitListener(queues = "${rabbitmq.queue.notification}")
-    public void consumer(CustomerNotificationRequest customerNotificationRequest) {
-        log.info("Consumed {} from queue", customerNotificationRequest);
-        notificationService.sendNotification(customerNotificationRequest);
+    public void consumer(NotificationRequest notificationRequest) {
+        log.info("Consumed {} from queue", notificationRequest);
+        notificationService.sendNotification(notificationRequest);
     }
 }

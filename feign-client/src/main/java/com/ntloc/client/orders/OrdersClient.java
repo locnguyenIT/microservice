@@ -1,14 +1,12 @@
-package com.ntloc.customer.feign;
+package com.ntloc.client.orders;
 
-import com.ntloc.customer.request.CustomerOrdersRequest;
-import com.ntloc.customer.response.OrdersResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "orders", url = "http://localhost:8030")
-public interface CustomerOrdersClient {
+public interface OrdersClient {
 
     @PostMapping(path = "/api/v1/orders")
-    OrdersResponse order(@RequestBody CustomerOrdersRequest ordersResponse);
+    OrdersResponse order(@RequestBody OrdersRequest ordersRequest);
 }

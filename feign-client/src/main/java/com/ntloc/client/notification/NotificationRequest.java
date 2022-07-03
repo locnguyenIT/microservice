@@ -1,7 +1,6 @@
-package com.ntloc.customer.request;
+package com.ntloc.client.notification;
 
 import lombok.*;
-
 
 @Getter
 @Setter
@@ -9,11 +8,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CustomerNotificationRequest {
+public class NotificationRequest {
 
     private Long toCustomerId;
     private String toCustomerName;
     private String toCustomerEmail;
-    private String sender;
     private String message;
 }

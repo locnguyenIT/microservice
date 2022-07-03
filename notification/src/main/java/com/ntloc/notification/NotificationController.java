@@ -1,6 +1,6 @@
 package com.ntloc.notification;
 
-import com.ntloc.customer.request.CustomerNotificationRequest;
+import com.ntloc.client.notification.NotificationRequest;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +29,9 @@ public class NotificationController {
     }
 
     @PostMapping
-    public void sendNotification(@RequestBody CustomerNotificationRequest customerNotificationRequest) {
-        log.info("New notification... {}", customerNotificationRequest);
-        notificationService.sendNotification(customerNotificationRequest);
+    public void sendNotification(@RequestBody NotificationRequest notificationRequest) {
+        log.info("New notification... {}", notificationRequest);
+        notificationService.sendNotification(notificationRequest);
     }
 
 }

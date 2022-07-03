@@ -2,15 +2,14 @@ package com.ntloc.customer;
 
 
 import com.ntloc.amqp.RabbitMQProducer;
-import com.ntloc.customer.feign.CustomerNotificationClient;
-import com.ntloc.customer.feign.CustomerOrdersClient;
-import com.ntloc.customer.feign.CustomerProductClient;
-import com.ntloc.customer.request.CustomerNotificationRequest;
-import com.ntloc.customer.request.CustomerOrdersRequest;
-import com.ntloc.customer.response.CustomerOrdersResponse;
-import com.ntloc.customer.response.CustomerRegistrationResponse;
-import com.ntloc.customer.response.OrdersResponse;
-import com.ntloc.customer.response.ProductResponse;
+import com.ntloc.client.notification.NotificationClient;
+import com.ntloc.client.notification.NotificationRequest;
+import com.ntloc.client.notification.NotificationResponse;
+import com.ntloc.client.orders.OrdersClient;
+import com.ntloc.client.orders.OrdersRequest;
+import com.ntloc.client.orders.OrdersResponse;
+import com.ntloc.client.product.ProductClient;
+import com.ntloc.client.product.ProductResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,9 +23,9 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
-    private final CustomerProductClient customerProductClient;
-    private final CustomerOrdersClient customerOrdersClient;
-    private final CustomerNotificationClient customerNotificationClient;
+    private final NotificationClient notificationClient;
+    private final OrdersClient ordersClient;
+    private final ProductClient productClient;
     private final RabbitMQProducer rabbitMQProducer;
 
     public List<CustomerDTO> getAllCustomer() {
@@ -40,50 +39,37 @@ public class CustomerService {
         return customerMapper.toDTO(customer);
     }
 
-    public CustomerRegistrationResponse register(CustomerDTO customerDTO) {
+    public CustomerDTO register(CustomerDTO customerDTO) {
         //1. Save customer
         CustomerEntity customer = customerRepository.save(CustomerEntity.builder()
                 .name(customerDTO.getName())
                 .email(customerDTO.getEmail())
                 .build());
         //2. Send notification to notification microservice
-        CustomerNotificationRequest notificationRequest = CustomerNotificationRequest.builder()
+        NotificationRequest notificationRequest = NotificationRequest.builder()
                 .toCustomerId(customer.getId())
                 .toCustomerName(customer.getName())
                 .toCustomerEmail(customer.getEmail())
-                .sender("ntloc")
                 .message(String.format("Hi %s. Welcome to PJ-AT microservices project", customer.getName()))
                 .build();
         rabbitMQProducer.publish("internal.exchange", "internal.notification.routing-key", notificationRequest);
 
-        //NotificationResponse notificationResponse = customerNotificationClient.sendNotification(notificationRequest);
-        //System.out.println(notificationResponse);
-        //3. Build CustomerRegistrationResponse
-        CustomerRegistrationResponse customerRegistrationResponse = CustomerRegistrationResponse.builder()
-                .id(customer.getId())
-                .name(customer.getName())
-                .email(customer.getEmail())
-                .build();
+//        NotificationResponse notificationResponse = notificationClient.sendNotification(notificationRequest);
+//        System.out.println(notificationResponse);
         log.info("Customer register success {}", customer);
         //4. Return
-        return customerRegistrationResponse;
+        return customerMapper.toDTO(customer);
     }
 
-    public CustomerOrdersResponse orders(CustomerOrdersRequest customerOrdersRequest) {
-        CustomerEntity customer = customerRepository.findById(customerOrdersRequest.getCustomerId()).orElseThrow(() ->
+    public OrdersResponse orders(OrdersRequest ordersRequest) {
+        CustomerEntity customer = customerRepository.findById(ordersRequest.getCustomerId()).orElseThrow(() ->
                 new IllegalStateException("Customer not found"));
 
-        OrdersResponse ordersResponse = customerOrdersClient.order(customerOrdersRequest);
+        ProductResponse product = productClient.getProduct(ordersRequest.getProductId());
 
-        ProductResponse productResponse = customerProductClient.getProduct(ordersResponse.getProductId());
+        OrdersResponse order = ordersClient.order(ordersRequest);
 
-        CustomerOrdersResponse customerOrdersResponse = CustomerOrdersResponse.builder()
-                .id(ordersResponse.getId())
-                .customer(customerMapper.toDTO(customer))
-                .product(productResponse)
-                .amount(ordersResponse.getAmount())
-                .createAt(ordersResponse.getCreateAt()).build();
-        return customerOrdersResponse;
+        return order;
 
     }
 
