@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "orders", url = "http://localhost:8030")
-public interface CustomerOrdersFeignClient {
+public interface CustomerOrdersClient {
 
     @PostMapping(path = "/api/v1/orders")
     OrdersResponse order(@RequestBody CustomerOrdersRequest ordersResponse);

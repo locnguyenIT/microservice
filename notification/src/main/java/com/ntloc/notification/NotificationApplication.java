@@ -1,18 +1,20 @@
-package com.ntloc.customer;
+package com.ntloc.notification;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
+@EnableEurekaClient
 //ScanBasePackages is using to load all the bean from that package
 @SpringBootApplication(
-        scanBasePackages = {"com.ntloc.amqp",
-                "com.ntloc.customer"})
-@EnableEurekaClient
-@EnableFeignClients
-public class CustomerApplication {
+        scanBasePackages = {
+                "com.ntloc.notification",
+                "com.ntloc.amqp",
+        }
+)
+public class NotificationApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CustomerApplication.class, args);
+        SpringApplication.run(NotificationApplication.class, args);
     }
+
 }

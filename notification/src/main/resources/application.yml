@@ -1,14 +1,12 @@
-#Server
 server:
-  port: 8010
+  port: 8040
   error:
     include-message: always
-#Spring
 spring:
   application:
-    name: customer
+    name: notification
   datasource:
-    url: jdbc:mysql://localhost:3307/customer
+    url: jdbc:mysql://localhost:3307/notification
     username: root
     password: password
   jpa:
@@ -21,7 +19,7 @@ spring:
   zipkin:
     baseUrl: http://localhost:9411
   rabbitmq:
-    addresses: localhost:5672
+      addresses: localhost:5672
 #Eureka-Client
 eureka:
   client:
@@ -29,3 +27,11 @@ eureka:
       defaultZone: http://localhost:8761/eureka
     fetch-registry: true
     register-with-eureka: true
+#RabbitMQ
+rabbitmq:
+  exchange:
+    internal: internal.exchange
+  queue:
+    notification: notification.queue
+  routing-key:
+    internal-notification: internal.notification.routing-key

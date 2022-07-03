@@ -18,5 +18,5 @@ public class CustomerOrdersResponse {
     private ProductResponse product;
     private Integer amount;
     private LocalDateTime createAt;
-
+    private NotificationResponse notification;
 }

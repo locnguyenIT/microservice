@@ -2,6 +2,7 @@ package com.ntloc.customer;
 
 import com.ntloc.customer.request.CustomerOrdersRequest;
 import com.ntloc.customer.response.CustomerOrdersResponse;
+import com.ntloc.customer.response.CustomerRegistrationResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class CustomerController {
     }
 
     @PostMapping(path = "/registration")
-    public CustomerDTO register(@RequestBody CustomerDTO customerDTO) {
+    public CustomerRegistrationResponse register(@RequestBody CustomerDTO customerDTO) {
         log.info("New customer registration {}", customerDTO);
         return customerService.register(customerDTO);
     }
