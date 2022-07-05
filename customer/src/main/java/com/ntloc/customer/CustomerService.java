@@ -2,9 +2,7 @@ package com.ntloc.customer;
 
 
 import com.ntloc.amqp.RabbitMQProducer;
-import com.ntloc.client.notification.NotificationClient;
 import com.ntloc.client.notification.NotificationRequest;
-import com.ntloc.client.notification.NotificationResponse;
 import com.ntloc.client.orders.OrdersClient;
 import com.ntloc.client.orders.OrdersRequest;
 import com.ntloc.client.orders.OrdersResponse;
@@ -23,7 +21,6 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
-    private final NotificationClient notificationClient;
     private final OrdersClient ordersClient;
     private final ProductClient productClient;
     private final RabbitMQProducer rabbitMQProducer;
@@ -45,17 +42,15 @@ public class CustomerService {
                 .name(customerDTO.getName())
                 .email(customerDTO.getEmail())
                 .build());
-        //2. Send notification to notification microservice
+        //2. Create notificationRequest
         NotificationRequest notificationRequest = NotificationRequest.builder()
                 .toCustomerId(customer.getId())
                 .toCustomerName(customer.getName())
                 .toCustomerEmail(customer.getEmail())
                 .message(String.format("Hi %s. Welcome to PJ-AT microservices project", customer.getName()))
                 .build();
+        //3. Send notification to message queue
         rabbitMQProducer.publish("internal.exchange", "internal.notification.routing-key", notificationRequest);
-
-//        NotificationResponse notificationResponse = notificationClient.sendNotification(notificationRequest);
-//        System.out.println(notificationResponse);
         log.info("Customer register success {}", customer);
         //4. Return
         return customerMapper.toDTO(customer);
