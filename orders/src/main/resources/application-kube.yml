@@ -1,14 +1,14 @@
 #Server
 server:
-  port: 8010
+  port: 8030
   error:
     include-message: always
 #Spring
 spring:
   application:
-    name: customer
+    name: orders
   datasource:
-    url: jdbc:mysql://localhost:3307/customer
+    url: jdbc:mysql://mysql:3306/orders
     username: root
     password: password
   jpa:
@@ -19,13 +19,12 @@ spring:
         format_sql: true
     show_sql: true
   zipkin:
-    baseUrl: http://localhost:9411
-  rabbitmq:
-    addresses: localhost:5672
+    baseUrl: http://zipkin:9411
 #Eureka-Client
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
     fetch-registry: true
     register-with-eureka: true
+    enabled: false
