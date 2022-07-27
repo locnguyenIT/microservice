@@ -25,11 +25,11 @@ spec:
             - configMapRef:
                 name: mysql-config
           volumeMounts:
-            - name: mysql
+            - name: mysql #has to match name of volumes
               mountPath: /var/lib/mysql
           resources:
             requests:
-              cpu: 100m
+              cpu: 200m
               memory: 256Mi
             limits:
               cpu: 500m

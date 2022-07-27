@@ -17,6 +17,9 @@ spec:
           image: ntloc/orders:latest
           imagePullPolicy: Always
           resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
             limits:
               memory: "512Mi"
               cpu: "500m"

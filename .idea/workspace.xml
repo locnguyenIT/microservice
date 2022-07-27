@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d398b63e-f5d7-4bc4-8dba-d5c221485e7b" name="Changes" comment="delete .iml file">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="d398b63e-f5d7-4bc4-8dba-d5c221485e7b" name="Changes" comment="deploy-microservice-to-local-k8s">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/customer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/main/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/orders/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/orders/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/product/src/main/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/product/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feign-client/src/main/resources/client-kube.properties" beforeDir="false" afterPath="$PROJECT_DIR$/feign-client/src/main/resources/client-kube.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/minikube/bootstrap/mysql/statefulset.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/minikube/bootstrap/mysql/statefulset.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/minikube/services/customer/deployment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/minikube/services/customer/deployment.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/minikube/services/customer/service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/minikube/services/customer/service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/minikube/services/notification/deployment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/minikube/services/notification/deployment.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/minikube/services/notification/service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/minikube/services/notification/service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/minikube/services/orders/deployment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/minikube/services/orders/deployment.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/minikube/services/orders/service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/minikube/services/orders/service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/minikube/services/product/deployment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/minikube/services/product/deployment.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/minikube/services/product/service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/minikube/services/product/service.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification/src/main/java/com/ntloc/notification/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification/src/main/java/com/ntloc/notification/NotificationService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +64,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/kubernetes/minikube/services/product" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/microservices-main/microservices-main" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -81,14 +88,15 @@
       <command value="mvn install" />
       <command value="mvn clean package" />
       <command value="mvn clean install" />
-      <command value="mvn clean" />
       <command value="mvn clean package -P  jib-build-push-docker-image" />
+      <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.NotificationApplication">
+  <component name="RunManager" selected="Application.CustomerApplication">
     <configuration name="CustomerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ntloc.customer.CustomerApplication" />
       <module name="customer" />
+      <option name="PROGRAM_PARAMETERS" value="--spring.profiles.active=default" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ntloc.customer.*" />
@@ -125,19 +133,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NotificationApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ntloc.notification.NotificationApplication" />
-      <module name="notification" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ntloc.notification.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OrdersApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ntloc.orders.OrdersApplication" />
       <module name="orders" />
@@ -151,18 +146,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProductApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ntloc.product.ProductApplication" />
+      <module name="product" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ntloc.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.CustomerApplication" />
-      <item itemvalue="Application.OrdersApplication" />
-      <item itemvalue="Application.NotificationApplication" />
       <item itemvalue="Application.EurekaServerApplication" />
       <item itemvalue="Application.GatewayApplication" />
+      <item itemvalue="Application.OrdersApplication" />
+      <item itemvalue="Application.ProductApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.NotificationApplication" />
         <item itemvalue="Application.CustomerApplication" />
         <item itemvalue="Application.OrdersApplication" />
+        <item itemvalue="Application.ProductApplication" />
         <item itemvalue="Application.GatewayApplication" />
         <item itemvalue="Application.EurekaServerApplication" />
       </list>
@@ -282,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656873421953</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="deploy-microservice-to-local-k8s">
+      <created>1658268846258</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1658268846258</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,6 +329,7 @@
     <MESSAGE value="notification-message-queue-rabbitmq" />
     <MESSAGE value="maven-package-microservices-jar-file" />
     <MESSAGE value="delete .iml file" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete .iml file" />
+    <MESSAGE value="deploy-microservice-to-local-k8s" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy-microservice-to-local-k8s" />
   </component>
 </project>

@@ -27,93 +27,93 @@ services:
       - "15672:15672"
     networks:
       - spring
-  eureka-server:
-    image: ntloc/eureka-server:latest
-    container_name: eureka-server
-    ports:
-      - "8761:8761"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-  gateway:
-    image: ntloc/gateway:latest
-    container_name: gateway
-    ports:
-      - "8080:8080"
-    networks:
-      - spring
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    depends_on:
-      - zipkin
-      - eureka-server
-  customer:
-    image: ntloc/customer:latest
-    container_name: customer
-    ports:
-      - "8010:8010"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - mysql
-    depends_on:
-      - eureka-server
-      - gateway
-      - mysql
-      - zipkin
-      - rabbitmq
-  product:
-    image: ntloc/product:latest
-    container_name: product
-    ports:
-      - "8020:8020"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - mysql
-    depends_on:
-      - eureka-server
-      - gateway
-      - mysql
-      - zipkin
-      - rabbitmq
-  orders:
-    image: ntloc/orders:latest
-    container_name: orders
-    ports:
-      - "8030:8030"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - mysql
-    depends_on:
-      - eureka-server
-      - gateway
-      - mysql
-      - zipkin
-      - rabbitmq
-  notification:
-    image: ntloc/notification:latest
-    container_name: notification
-    ports:
-      - "8040:8040"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - mysql
-    depends_on:
-      - eureka-server
-      - gateway
-      - mysql
-      - zipkin
-      - rabbitmq
+#  eureka-server:
+#    image: ntloc/eureka-server:latest
+#    container_name: eureka-server
+#    ports:
+#      - "8761:8761"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
+#  gateway:
+#    image: ntloc/gateway:latest
+#    container_name: gateway
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - spring
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    depends_on:
+#      - zipkin
+#      - eureka-server
+#  customer:
+#    image: ntloc/customer:latest
+#    container_name: customer
+#    ports:
+#      - "8010:8010"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#      - mysql
+#    depends_on:
+#      - eureka-server
+#      - gateway
+#      - mysql
+#      - zipkin
+#      - rabbitmq
+#  product:
+#    image: ntloc/product:latest
+#    container_name: product
+#    ports:
+#      - "8020:8020"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#      - mysql
+#    depends_on:
+#      - eureka-server
+#      - gateway
+#      - mysql
+#      - zipkin
+#      - rabbitmq
+#  orders:
+#    image: ntloc/orders:latest
+#    container_name: orders
+#    ports:
+#      - "8030:8030"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#      - mysql
+#    depends_on:
+#      - eureka-server
+#      - gateway
+#      - mysql
+#      - zipkin
+#      - rabbitmq
+#  notification:
+#    image: ntloc/notification:latest
+#    container_name: notification
+#    ports:
+#      - "8040:8040"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#      - mysql
+#    depends_on:
+#      - eureka-server
+#      - gateway
+#      - mysql
+#      - zipkin
+#      - rabbitmq
 networks:
   mysql:
     driver: bridge

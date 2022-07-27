@@ -19,8 +19,8 @@ public class NotificationService {
         return notificationMapper.toListDTO(listProduct);
     }
 
-    public NotificationDTO getNotification(Long otificationId) {
-        NotificationEntity product = notificationRepository.findById(otificationId).orElseThrow(() ->
+    public NotificationDTO getNotification(Long notificationId) {
+        NotificationEntity product = notificationRepository.findById(notificationId).orElseThrow(() ->
                 new IllegalStateException("Notification not found"));
         return notificationMapper.toDTO(product);
     }
