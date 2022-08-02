@@ -35,7 +35,7 @@
     <spring.boot.maven.plugin.version>2.6.4</spring.boot.maven.plugin.version>
     <spring.boot.dependencies.version>2.6.4</spring.boot.dependencies.version>
     <spring.cloud.dependencies.version>2021.0.1</spring.cloud.dependencies.version>
-    <image>ntloc/${project.artifactId}:${project.version}</image>
+    <image>ntloc/${project.artifactId}</image>
   </properties>
 
   <!--  All sub-module can pick one of list spring dependencies in there pom.xml -->
@@ -104,6 +104,7 @@
               <image>openjdk:17-alpine</image>
             </from>
             <to>
+              <image>docker.io/${image}</image>
               <tags>
                 <tag>latest</tag>
               </tags>
@@ -120,16 +121,16 @@
         </plugin>
       </plugins>
     </pluginManagement>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>16</source>
-          <target>16</target>
-        </configuration>
-      </plugin>
-    </plugins>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>16</source>
+                  <target>16</target>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
 
 </project>

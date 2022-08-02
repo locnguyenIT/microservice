@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d398b63e-f5d7-4bc4-8dba-d5c221485e7b" name="Changes" comment="refactor code for k8s">
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="d398b63e-f5d7-4bc4-8dba-d5c221485e7b" name="Changes" comment="rollback docker-compose.yml">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="12-containerize-build-push-image-jib-run-microservices-docker-container" />
+        <entry key="$PROJECT_DIR$" value="13-deploy-microservice-to-local-kubernetes" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,7 +52,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/microservices-main/microservices-main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/kubernetes/aws-eks" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -59,8 +60,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\IdeaProjects\microservices\kubernetes\minikube\services\product" />
-      <recent name="D:\IdeaProjects\microservices\kubernetes\minikube\bootstrap\rabbitmq" />
+      <recent name="D:\IdeaProjects\microservices\kubernetes\aws-eks" />
+      <recent name="D:\IdeaProjects\microservices\feign-client\src\main\resources" />
       <recent name="D:\IdeaProjects\microservices\product\src\main\resources" />
       <recent name="D:\IdeaProjects\microservices\orders\src\main\resources" />
       <recent name="D:\IdeaProjects\microservices\notification\src\main\resources" />
@@ -75,8 +76,8 @@
       <command value="mvn install" />
       <command value="mvn clean package" />
       <command value="mvn clean install" />
-      <command value="mvn clean package -P  jib-build-push-docker-image" />
       <command value="mvn clean" />
+      <command value="mvn clean package -P  jib-build-push-docker-image" />
     </option>
   </component>
   <component name="RunManager" selected="Application.CustomerApplication">
@@ -291,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658951173502</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="rollback docker-compose.yml">
+      <created>1658951376994</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1658951376994</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -325,6 +333,7 @@
     <MESSAGE value="delete .iml file" />
     <MESSAGE value="deploy-microservice-to-local-k8s" />
     <MESSAGE value="refactor code for k8s" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor code for k8s" />
+    <MESSAGE value="rollback docker-compose.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="rollback docker-compose.yml" />
   </component>
 </project>
