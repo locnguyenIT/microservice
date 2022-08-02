@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d398b63e-f5d7-4bc4-8dba-d5c221485e7b" name="Changes" comment="deploy microservices to aws-eks">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/build.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kubernetes/aws-eks/services/orders/deployment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/aws-eks/services/orders/deployment.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="13-deploy-microservice-to-local-kubernetes" />
+        <entry key="$PROJECT_DIR$" value="15-CI/CD-microservices" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,6 +50,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/kubernetes/aws-eks" />
