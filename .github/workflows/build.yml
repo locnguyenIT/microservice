@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up DB
-      run: mysql -u root -ppassword -e "CREATE DATABASE customer; CREATE DATABASE product; CREATE DATABASE orders; CREATE DATABASE notification;"
+      run: mysql -u root -p -e "CREATE DATABASE customer; CREATE DATABASE product; CREATE DATABASE orders; CREATE DATABASE notification;"
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
