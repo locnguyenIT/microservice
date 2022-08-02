@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d398b63e-f5d7-4bc4-8dba-d5c221485e7b" name="Changes" comment="rollback docker-compose.yml">
+    <list default="true" id="d398b63e-f5d7-4bc4-8dba-d5c221485e7b" name="Changes" comment="deploy microservices to aws-eks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kubernetes/aws-eks/services/orders/deployment.yml" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/aws-eks/services/orders/deployment.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +76,8 @@
       <command value="mvn install" />
       <command value="mvn clean package" />
       <command value="mvn clean install" />
-      <command value="mvn clean" />
       <command value="mvn clean package -P  jib-build-push-docker-image" />
+      <command value="mvn clean" />
     </option>
   </component>
   <component name="RunManager" selected="Application.CustomerApplication">
@@ -299,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658951376994</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="deploy microservices to aws-eks">
+      <created>1659460472470</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1659460472470</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -334,6 +341,7 @@
     <MESSAGE value="deploy-microservice-to-local-k8s" />
     <MESSAGE value="refactor code for k8s" />
     <MESSAGE value="rollback docker-compose.yml" />
-    <option name="LAST_COMMIT_MESSAGE" value="rollback docker-compose.yml" />
+    <MESSAGE value="deploy microservices to aws-eks" />
+    <option name="LAST_COMMIT_MESSAGE" value="deploy microservices to aws-eks" />
   </component>
 </project>
